@@ -10,7 +10,8 @@ if(isset($_GET['category']) && is_numeric($_GET['category'])){
     $active_id = $categoryId;
 }else{
     // $posts = getAll('posts');
-    $posts = joinTable("posts","categories","category_id","id");
+    $posts = joinTable("posts","categories","category_id","id" , "WHERE `status` = 'active'");
+   
 }
 $categories = getAll('categories');
 require_once('views/frontend/posts.php');

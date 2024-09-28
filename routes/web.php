@@ -74,6 +74,16 @@ if (isset($_GET['page'])) {
             $page_name = 'Users';
             require_once BASE_PATH . 'controllers/admin/users.php';
             break;
+            case "settings":
+                $active_id = 5;
+                $page_name = 'Users';
+                require_once BASE_PATH . 'controllers/admin/settings.php';
+                break;
+                case "store-settings":
+                    $active_id = 5;
+                    $page_name = 'Settings';
+                    require_once BASE_PATH . 'controllers/admin/settings/store-settings.php';
+                    break;
 
         case "add-post":
             $active_id = 1;
