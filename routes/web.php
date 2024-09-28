@@ -74,16 +74,16 @@ if (isset($_GET['page'])) {
             $page_name = 'Users';
             require_once BASE_PATH . 'controllers/admin/users.php';
             break;
-            case "settings":
-                $active_id = 5;
-                $page_name = 'Users';
-                require_once BASE_PATH . 'controllers/admin/settings.php';
-                break;
-                case "store-settings":
-                    $active_id = 5;
-                    $page_name = 'Settings';
-                    require_once BASE_PATH . 'controllers/admin/settings/store-settings.php';
-                    break;
+        case "settings":
+            $active_id = 5;
+            $page_name = 'Users';
+            require_once BASE_PATH . 'controllers/admin/settings.php';
+            break;
+        case "store-settings":
+            $active_id = 5;
+            $page_name = 'Settings';
+            require_once BASE_PATH . 'controllers/admin/settings/store-settings.php';
+            break;
 
         case "add-post":
             $active_id = 1;
@@ -101,11 +101,50 @@ if (isset($_GET['page'])) {
             $active_id = 1;
             require_once BASE_PATH . 'controllers/admin/posts/show-edit-post.php';
             break;
-            case "save-edit-post":
-                $active_id = 1;
-                require_once BASE_PATH . 'controllers/admin/posts/edit-post.php';
+        case "save-edit-post":
+            $active_id = 1;
+            require_once BASE_PATH . 'controllers/admin/posts/edit-post.php';
+            break;
+        case "show_store_categories":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/categories/show_store_categories.php';
+            break;
+        case "store_category":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/categories/store-category.php';
+            break;
+        case "delete_category":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/categories/delete_category.php';
+            break;
+        case "show_edit_category":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/categories/show_edit_category.php';
+            break;
+        case "edit_category":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/categories/edit_category.php';
+            break;
+        case "delete_user":
+            $active_id = 3;
+            require_once BASE_PATH . 'controllers/admin/users/delete_user.php';
+            break;
+        case "show_edit_user":
+            $active_id = 4;
+            require_once BASE_PATH . 'controllers/admin/users/show_edit_user.php';
+            break;
+        case "edit_user":
+            $active_id = 4;
+            require_once BASE_PATH . 'controllers/admin/users/edit_user.php';
+            break;
+        case "add_user":
+            $active_id = 4;
+            require_once BASE_PATH . 'controllers/admin/users/show_store_users.php';
+            break;
+            case "store_user":
+                $active_id = 4;
+                require_once BASE_PATH . 'controllers/admin/users/store-users.php';
                 break;
-
         default:
             require_once BASE_PATH . 'views/errors/404.php';
 

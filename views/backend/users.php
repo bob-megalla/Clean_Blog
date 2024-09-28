@@ -35,6 +35,19 @@ if (!empty($_SESSION['user_id'])): ?>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
+                            <?php
+                                    if (isset($_SESSION['errors'])) {
+                                        require_once('views/errors/error.php');
+                                    }
+                                    unset($_SESSION['errors'])
+                                        ?>
+
+<?php
+                                    if (isset($_SESSION['success'])) {
+                                        require_once('views/errors/success.php');
+                                    }
+                                    unset($_SESSION['success'])
+                                        ?>
                                 <!-- START -->
                                 <div class="card">
                                     <div class="card-body table-responsive p-0">
@@ -44,10 +57,10 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Username</th>
-                                                    <th>Type</th>
+                                               
                                                    
                                                     <th>
-                                                    <a href="" class="btn btn-block btn-outline-success">Add</a>
+                                                    <a href="<?="?admin=add_user"?>" class="btn btn-block btn-outline-success">Add</a>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -57,11 +70,10 @@ if (!empty($_SESSION['user_id'])): ?>
                                                         <td><?= $user['id'] ?></td>
                                                         <td><?= $user['name'] ?></td>
                                                         <td><?= $user['username'] ?></td>
-                                                        <td><?= $user['type'] ?></td>
                                                       
                                                         <td class="col-2">
-                                                        <a href="" class="btn btn-block btn-outline-info">Edit</a>
-                                                        <a href="" class="btn btn-block btn-outline-danger">Delete</a>
+                                                        <a href="<?="?admin=show_edit_user&id=$user[id]"?>" class="btn btn-block btn-outline-info">Edit</a>
+                                                        <a href="<?="?admin=delete_user&id=$user[id]"?>" class="btn btn-block btn-outline-danger">Delete</a>
 
                                                         </td>
                                                     </tr>
