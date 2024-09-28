@@ -35,6 +35,19 @@ if (!empty($_SESSION['user_id'])): ?>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
+                            <?php
+                                    if (isset($_SESSION['errors'])) {
+                                        require_once('views/errors/error.php');
+                                    }
+                                    unset($_SESSION['errors'])
+                                        ?>
+                                         <?php
+                                    if (isset($_SESSION['success'])) {
+                                        require_once('views/errors/success.php');
+                                    }
+                                    unset($_SESSION['success'])
+                                        ?>
+                                   
                                 <!-- START -->
                                 <div class="card">
                                     <div class="card-body table-responsive p-0">
@@ -44,8 +57,9 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>E-Mail</th>
-                                                    <th>Subject</th>
+                                                    <th>Phone</th>
                                                     <th>Content</th>
+                                                    <th>IS Read</th>
                                                     <th>Created By</th>
                                                     <th class="text-center">Actions</th>
                                                 </tr>
@@ -56,12 +70,18 @@ if (!empty($_SESSION['user_id'])): ?>
                                                         <td><?= $message['id'] ?></td>
                                                         <td><?= $message['name'] ?></td>
                                                         <td><?= $message['email'] ?></td>
-                                                        <td><?= $message['subject'] ?></td>
+                                                        <td><?= $message['phone'] ?></td>
                                                         <td><?= $message['content'] ?></td>
-                                                        <td><?= $message['user_id'] ?></td>
+                                                        <td><?= $message['is_readed'] ?></td>
+                                                        <td><?= date("F d, Y",strtotime($message['created_at'])); ?></td>
                                                         <td>
-                                                        <a href="" class="btn btn-block btn-outline-info">Edit</a>
-                                                        <a href="" class="btn btn-block btn-outline-danger">Delete</a>
+                                                            <?php if($message['is_readed'] == 1): ?>
+                                                            <a href="<?="?admin=read_message&id=$message[id]"?>" title="This Messages Already Readed" class="btn btn-block btn-outline-info disabled">Read</a>
+                                                            <?php else: ?>
+                                                            <a href="<?="?admin=read_message&id=$message[id]"?>" class="btn btn-block btn-outline-info">Read</a>
+                                                            <?php endif; ?>
+
+                                                        <a href="<?="?admin=delete_message&id=$message[id]"?>" class="btn btn-block btn-outline-danger">Delete</a>
 
                                                         </td>
                                                     </tr>

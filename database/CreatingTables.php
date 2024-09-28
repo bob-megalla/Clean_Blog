@@ -44,10 +44,10 @@ $sql = "CREATE TABLE IF NOT EXISTS `messages`(
     `id` int(11)  PRIMARY KEY  AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `email` varchar(255) NOT NULL,
-    `subject` varchar(255) NOT NULL,
+    `phone` varchar(255) NOT NULL,
     `content` TEXT NOT NULL,
-    `user_id` int(11) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    `is_readed` int(11) NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
 mysqli_query($conn,$sql);

@@ -33,6 +33,9 @@ if (isset($_GET['page'])) {
         case "login":
             require_once BASE_PATH . 'controllers/auth/login.php';
             break;
+            case "send_message":
+                require_once BASE_PATH . 'controllers/user/send_message.php';
+                break;
 
         default:
             require_once BASE_PATH . 'views/errors/404.php';
@@ -145,6 +148,15 @@ if (isset($_GET['page'])) {
                 $active_id = 4;
                 require_once BASE_PATH . 'controllers/admin/users/store-users.php';
                 break;
+                case "delete_message":
+                    $active_id = 2;
+                    require_once BASE_PATH . 'controllers/admin/messages/delete-message.php';
+                    break;
+                    
+                    case "read_message":
+                        $active_id = 2;
+                        require_once BASE_PATH . 'controllers/admin/messages/read_message.php';
+                        break;
         default:
             require_once BASE_PATH . 'views/errors/404.php';
 
