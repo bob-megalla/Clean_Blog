@@ -34,7 +34,6 @@ function joinTable($table1,$table2,$field1,$field2,$where=''){
             ON `$table1`.$field1 = `$table2`.$field2
             $where 
     ";
-    // dd([$sql]);
     $result = mysqli_query($conn, $sql);
     $rows = [];
     while($row = mysqli_fetch_assoc($result)) {
@@ -48,4 +47,21 @@ function getRow($table_name,$id){
     $sql = "SELECT * FROM `$table_name` WHERE `id`='$id'  LIMIT 1";
     $result = mysqli_query($conn, $sql);
     return mysqli_fetch_assoc($result);
+}
+
+function joinPostsWithCommentsTable($table1,$table2,$field1,$field2,$where=''){
+    global $conn;
+    $sql = "SELECT $table1.*,$table2.$field2 AS table_comment,post_id FROM `$table1` 
+            INNER JOIN `$table2` 
+            ON `$table1`.$field1 = `$table2`.$field2
+            $where 
+    ";
+    // dd($sql);
+    // die;
+    $result = mysqli_query($conn, $sql);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 }

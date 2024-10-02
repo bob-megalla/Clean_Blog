@@ -6,7 +6,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `users`(
     `id` int(11)  PRIMARY KEY  AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `username` varchar(255) UNIQUE NOT NULL,
-    `type` TINYINT NOT NULL default(0),
+    `type` TINYINT NOT NULL default(1),
     `password` varchar(255) NOT NULL
 )";
 
@@ -46,7 +46,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `messages`(
     `email` varchar(255) NOT NULL,
     `phone` varchar(255) NOT NULL,
     `content` TEXT NOT NULL,
-    `is_readed` int(11) NOT NULL,
+    `is_readed` int(11) DEFAULT 0,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
@@ -69,6 +69,21 @@ $sql = "CREATE TABLE IF NOT EXISTS `settings`(
 
 mysqli_query($conn,$sql);
 //////// END CREATING SETTINGS TABLE //////////////
+
+//////// START CREATING COMMENTS TABLE //////////////
+$sql = "CREATE TABLE IF NOT EXISTS `comments`(
+    `id` int(11)  PRIMARY KEY  AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `comment` TEXT NOT NULL,
+    `post_id` int(11) NOT NULL,
+    `is_readed` int(11) DEFAULT 0,
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+)";
+
+mysqli_query($conn,$sql);
+//////// END CREATING COMMENTS TABLE //////////////
 
 echo('tables created succussfully <br>');
 

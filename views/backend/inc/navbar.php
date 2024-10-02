@@ -35,9 +35,33 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
+      <?php $unreaded_comments = getAll('comments',where:"WHERE `is_readed` = 0"); ?>
+        <?php if(count($unreaded_comments) < 1) :?>
+          <span class="badge badge-warning navbar-badge"></span>
+          <?php else: ?>
+        <span class="badge badge-warning navbar-badge"><?=count($unreaded_comments)?></span>
+        <?php endif; ?>
+
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <span class="dropdown-header"><?=count($unreaded_comments)?> Comments</span>
+        <div class="dropdown-divider"></div>
+
+        <a href="#" class="dropdown-item">
+          <i class="fas fa-file mr-2"></i> <?=count($unreaded_comments)?> Comments
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="<?="?admin=comments"?>" class="dropdown-item dropdown-footer">See All Comments</a>
+      </div>
+    </li>
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="far fa-comments"></i>
 
       <?php $unreaded_messages = getAll('messages',where:"WHERE `is_readed` = 0"); ?>
-        <?php if (count($unreaded_messages) < 1) :?>
+        <?php if (count($unreaded_messages) < 1 or (count($unreaded_comments) < 1)) :?>
           <span class="badge badge-warning navbar-badge"></span>
           <?php else: ?>
         <span class="badge badge-warning navbar-badge"><?=count($unreaded_messages)?></span>

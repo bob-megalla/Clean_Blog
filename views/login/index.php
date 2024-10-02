@@ -48,6 +48,7 @@
         require_once('views/errors/error.php');
       }
       unset($_SESSION['errors']);
+      unset($_SESSION['success']);
       ?>
   </div>
 </div>

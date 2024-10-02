@@ -88,6 +88,17 @@
         </li>
         <!-- END USERS -->
 
+                    <!-- START COMMENTS -->
+                    <li class="nav-item">
+          <a href="<?= '?admin=comments'?>" class="nav-link <?= activeAdminLink($active_id,6); ?>">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+              COMMENTS
+            </p>
+          </a>
+        </li>
+        <!-- END COMMENTS -->
+
 
         <!-- <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
